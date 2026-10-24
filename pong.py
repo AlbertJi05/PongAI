@@ -18,7 +18,8 @@ DISPLAY_WIDTH = 640
 DISPLAY_BUFFER = 5
 
 BALL_SIZE = 15
-BALL_VELOCITY = 3
+BALL_X_VELOCITY = 3
+BALL_Y_VELOCITY = 1
 
 class Direction(Enum):
     UP = 1
@@ -46,7 +47,7 @@ class Pong:
         
         # init ball
         self.ball = pygame.Rect(DISPLAY_WIDTH/2-BALL_SIZE, DISPLAY_HEIGHT/2-BALL_SIZE, BALL_SIZE, BALL_SIZE)
-        self.ball_x_velocity = random.choice([BALL_VELOCITY, -BALL_VELOCITY])
+        self.ball_x_velocity = random.choice([BALL_X_VELOCITY, -BALL_X_VELOCITY])
         self.ball_y_velocity = None
         self._intialize_ball()
 
@@ -150,7 +151,7 @@ class Pong:
         self.ball.y += self.ball_y_velocity
     
     def _intialize_ball(self):
-        y = random.choice([-1, 1])
+        y = random.choice([BALL_Y_VELOCITY, -BALL_Y_VELOCITY])
         self.ball_y_velocity = y
         
             
